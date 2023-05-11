@@ -19,6 +19,7 @@ export enum ChainId {
   CELO_ALFAJORES = 44787,
   GNOSIS = 100,
   MOONBEAM = 1284,
+  MOONBASE_ALPHA = 1287,
   BSC = 56,
 }
 
@@ -40,6 +41,8 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.CELO_ALFAJORES,
   ChainId.CELO,
   ChainId.BSC,
+  ChainId.MOONBEAM,
+  ChainId.MOONBASE_ALPHA,
   // Gnosis and Moonbeam don't yet have contracts deployed yet
 ];
 
@@ -112,6 +115,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.GNOSIS;
     case 1284:
       return ChainId.MOONBEAM;
+    case 1287:
+      return ChainId.MOONBASE_ALPHA;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -135,6 +140,7 @@ export enum ChainName {
   CELO_ALFAJORES = 'celo-alfajores',
   GNOSIS = 'gnosis-mainnet',
   MOONBEAM = 'moonbeam-mainnet',
+  MOONBASE_ALPHA = 'moonbase-alpha',
   BSC = 'bsc-mainnet',
 }
 
@@ -146,6 +152,7 @@ export enum NativeCurrencyName {
   CELO = 'CELO',
   GNOSIS = 'XDAI',
   MOONBEAM = 'GLMR',
+  MOONBASE_ALPHA = 'DEV',
   BNB = "BNB",
 }
 export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
@@ -215,6 +222,7 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.CELO_ALFAJORES]: ['CELO'],
   [ChainId.GNOSIS]: ['XDAI'],
   [ChainId.MOONBEAM]: ['GLMR'],
+  [ChainId.MOONBASE_ALPHA]: ['DEV'],
   [ChainId.BSC]: [
     'BNB',
     'BNB',
@@ -240,6 +248,7 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.CELO_ALFAJORES]: NativeCurrencyName.CELO,
   [ChainId.GNOSIS]: NativeCurrencyName.GNOSIS,
   [ChainId.MOONBEAM]: NativeCurrencyName.MOONBEAM,
+  [ChainId.MOONBASE_ALPHA]: NativeCurrencyName.MOONBASE_ALPHA,
   [ChainId.BSC]: NativeCurrencyName.BNB,
 };
 
@@ -281,6 +290,8 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.GNOSIS;
     case 1284:
       return ChainName.MOONBEAM;
+    case 1287:
+      return ChainName.MOONBASE_ALPHA;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -324,6 +335,10 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_CELO_ALFAJORES!;
     case ChainId.BSC:
       return process.env.JSON_RPC_PROVIDER_BSC!;
+    case ChainId.MOONBEAM:
+      return process.env.JSON_RPC_PROVIDER_MOONBEAM!;
+    case ChainId.MOONBASE_ALPHA:
+      return process.env.JSON_RPC_PROVIDER_MOONBASE_ALPHA!;
     default:
       throw new Error(`Chain id: ${id} not supported`);
   }
@@ -457,6 +472,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'WGLMR',
     'Wrapped GLMR'
+  ),
+  [ChainId.MOONBASE_ALPHA]: new Token(
+    ChainId.MOONBASE_ALPHA,
+    '0x845e4145F7de2822d16FE233Ecd0181c61f1d65F',
+    18,
+    'WDEV',
+    'Wrapped DEV'
   ),
 };
 

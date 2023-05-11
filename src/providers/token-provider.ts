@@ -620,6 +620,43 @@ export const WBTC_MOONBEAM = new Token(
   'Wrapped BTC bridged using Multichain'
 );
 
+// Moonbase Alpha Tokens
+export const USDC_MOONBASE_ALPHA = new Token(
+  ChainId.MOONBASE_ALPHA,
+  '0xFA79Ad6F5128c236c3894523260d48D693b0f155',
+  6,
+  'USDC',
+  'USD Coin bridged using Multichain'
+);
+export const USDT_MOONBASE_ALPHA = new Token(
+  ChainId.MOONBASE_ALPHA,
+  '0xc4c55Dd69AcB28B513387C7f50Cc4Ff9712770f8',
+  6,
+  'USDT',
+  'USDT'
+);
+export const WDEV_MOONBASE_ALPHA = new Token(
+  ChainId.MOONBASE_ALPHA,
+  '0x845e4145F7de2822d16FE233Ecd0181c61f1d65F',
+  18,
+  'WDEV',
+  'Wrapped DEV'
+);
+export const DAI_MOONBASE_ALPHA = new Token(
+  ChainId.MOONBASE_ALPHA,
+  '0xebc91412D8dD10F6fe2BD52FcE469A74B5dCFaa6',
+  6,
+  'DAI',
+  'Dai on moonbase_alpha bridged using Multichain'
+);
+export const WBTC_MOONBASE_ALPHA = new Token(
+  ChainId.MOONBASE_ALPHA,
+  '0x5803e430CE1867Ce426993e58Ad76946E622f592',
+  8,
+  'WBTC',
+  'Wrapped BTC bridged using Multichain'
+);
+
 export class TokenProvider implements ITokenProvider {
   constructor(
     private chainId: ChainId,
@@ -751,6 +788,8 @@ export const DAI_ON = (chainId: ChainId): Token => {
       return DAI_CELO_ALFAJORES;
     case ChainId.MOONBEAM:
       return DAI_MOONBEAM;
+    case ChainId.MOONBASE_ALPHA:
+      return DAI_MOONBASE_ALPHA;
     case ChainId.BSC:
       return DAI_BSC;
     default:
@@ -782,6 +821,8 @@ export const USDT_ON = (chainId: ChainId): Token => {
       return USDT_ARBITRUM_RINKEBY;
     case ChainId.BSC:
       return USDT_BSC;
+    case ChainId.MOONBASE_ALPHA:
+      return USDT_MOONBASE_ALPHA;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }
@@ -819,6 +860,8 @@ export const USDC_ON = (chainId: ChainId): Token => {
       return USDC_ETHEREUM_GNOSIS;
     case ChainId.MOONBEAM:
       return USDC_MOONBEAM;
+    case ChainId.MOONBASE_ALPHA:
+      return USDC_MOONBASE_ALPHA;
     case ChainId.BSC:
       return USDC_BSC;
     default:
