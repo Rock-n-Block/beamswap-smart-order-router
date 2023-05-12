@@ -2,9 +2,9 @@ import { computePoolAddress, Pool } from '@uniswap/v3-sdk';
 import retry from 'async-retry';
 import _ from 'lodash';
 import { IUniswapV3PoolState__factory } from '../../types/v3/factories/IUniswapV3PoolState__factory';
+import { V3_CORE_FACTORY_ADDRESSES } from '../../util/addresses';
 import { log } from '../../util/log';
 import { poolToString } from '../../util/routes';
-import { POOL_DEPLOYER_ADDRESSES } from '../../../../src';
 export class V3PoolProvider {
     /**
      * Creates an instance of V3PoolProvider.
@@ -92,11 +92,10 @@ export class V3PoolProvider {
             return { poolAddress: cachedAddress, token0, token1 };
         }
         const poolAddress = computePoolAddress({
-            factoryAddress: POOL_DEPLOYER_ADDRESSES[this.chainId],
+            factoryAddress: V3_CORE_FACTORY_ADDRESSES[this.chainId],
             tokenA: token0,
             tokenB: token1,
             fee: feeAmount,
-            initCodeHashManualOverride: '0x56b18efe15e1c2147cb76980b82af9abdb11804d1023cea47ed03a9482bd30d3'
         });
         this.POOL_ADDRESS_CACHE[cacheKey] = poolAddress;
         return { poolAddress, token0, token1 };
