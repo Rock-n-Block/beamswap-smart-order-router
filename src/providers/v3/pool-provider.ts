@@ -4,11 +4,9 @@ import { computePoolAddress, FeeAmount, Pool } from '@uniswap/v3-sdk';
 import retry, { Options as RetryOptions } from 'async-retry';
 import _ from 'lodash';
 
-import { IUniswapV3PoolState__factory } from '../../types/v3/factories/IUniswapV3PoolState__factory';
-import { ChainId } from '../../util';
-import { V3_CORE_FACTORY_ADDRESSES } from '../../util/addresses';
-import { log } from '../../util/log';
-import { poolToString } from '../../util/routes';
+import { IUniswapV3PoolState__factory } from '../../types/v3';
+import { ChainId, POOL_DEPLOYER_ADDRESSES } from '../../util';
+import { log, poolToString } from '../../util';
 import { IMulticallProvider, Result } from '../multicall-provider';
 import { ProviderConfig } from '../provider';
 
@@ -226,10 +224,11 @@ export class V3PoolProvider implements IV3PoolProvider {
     }
 
     const poolAddress = computePoolAddress({
-      factoryAddress: V3_CORE_FACTORY_ADDRESSES[this.chainId]!,
+      factoryAddress: POOL_DEPLOYER_ADDRESSES[this.chainId] || '',
       tokenA: token0,
       tokenB: token1,
       fee: feeAmount,
+      initCodeHashManualOverride: '0x56b18efe15e1c2147cb76980b82af9abdb11804d1023cea47ed03a9482bd30d3'
     });
 
     this.POOL_ADDRESS_CACHE[cacheKey] = poolAddress;
