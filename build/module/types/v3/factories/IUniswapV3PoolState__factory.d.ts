@@ -1,7 +1,7 @@
 import { Provider } from "@ethersproject/providers";
 import { Signer } from "ethers";
-import type { ITokenValidator, ITokenValidatorInterface } from "../ITokenValidator";
-export declare class ITokenValidator__factory {
+import type { IUniswapV3PoolState, IUniswapV3PoolStateInterface } from "../IUniswapV3PoolState";
+export declare class IUniswapV3PoolState__factory {
     static readonly abi: {
         inputs: {
             internalType: string;
@@ -17,6 +17,6 @@ export declare class ITokenValidator__factory {
         stateMutability: string;
         type: string;
     }[];
-    static createInterface(): ITokenValidatorInterface;
-    static connect(address: string, signerOrProvider: Signer | Provider): ITokenValidator;
+    static createInterface(): IUniswapV3PoolStateInterface;
+    static connect(address: string, signerOrProvider: Signer | Provider): IUniswapV3PoolState;
 }

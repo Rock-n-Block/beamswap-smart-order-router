@@ -1,7 +1,7 @@
 import { Provider } from "@ethersproject/providers";
 import { Signer } from "ethers";
-import type { IMixedRouteQuoterV1, IMixedRouteQuoterV1Interface } from "../IMixedRouteQuoterV1";
-export declare class IMixedRouteQuoterV1__factory {
+import type { IQuoterV2, IQuoterV2Interface } from "../IQuoterV2";
+export declare class IQuoterV2__factory {
     static readonly abi: ({
         inputs: {
             internalType: string;
@@ -36,6 +36,6 @@ export declare class IMixedRouteQuoterV1__factory {
         stateMutability: string;
         type: string;
     })[];
-    static createInterface(): IMixedRouteQuoterV1Interface;
-    static connect(address: string, signerOrProvider: Signer | Provider): IMixedRouteQuoterV1;
+    static createInterface(): IQuoterV2Interface;
+    static connect(address: string, signerOrProvider: Signer | Provider): IQuoterV2;
 }
